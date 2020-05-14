@@ -3,7 +3,10 @@
     <h1 class="text-center font-weight-bolder display-5">Create an Event</h1>
     <%= render 'shared/errors', obj: @event%>
     <%= simple_form_for @event do |f| %>
+    <%= f.input :title, label: 'Title of event.', error: 'title is mandatory, please specify one' %>
     <%= f.input :description, label: 'Your description here.', error: 'description is mandatory, please specify one' %>
+    <%= f.input :location, label: 'Location of event', error: 'Location is mandatory, please specify one' %>
+    <%= f.input :date, label: 'Date of event.', error: 'Date is mandatory, please specify one' %>
     <%= f.button :submit, "Create Event", class: "btn btn-success w-100" %>
     <% end %>
 </div>

@@ -5,7 +5,24 @@
       <div class="card-body">
         <p> <span>Created by: </span> <%= @event.creator.username%></p>
          <p><%= @event.description%></p>
-
+   <span class='card-footer'>
+        <p><span>Location: </span><%= @event.location %></p>
+        <p><span>Starts at: </span><%= @event.date %></p>
+        <% if logged_in? && current_user != @event.creator %>
+            <% if attende_event?%>
+                <%= link_to 'Go to event',event_path(event_id: @event.id) , method: 'post', class: 'btn btn-primary'%>
+            <% else %>
+                <%= link_to "Don't go to event",event_path(event_id: @event.id) , method: 'delete', class: 'btn btn-secondary'%>
+            <% end %>
+        <% end %>
+    </span>
       </div>
+      <p><strong>Attendees:</strong></p>
+    <hr>
+    <ul>
+        <% @event.invitations.each do |invitation| %>
+            <li><%= invitation.attendee.username %></li>
+        <% end %>
+    </ul>
    </div>
 </div>

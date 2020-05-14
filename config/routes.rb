@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  resources :events
+  resources :events, excetp: [:update, :destroy, :edit]
+
+  post '/invite' => 'events#new_invitation'
+  delete '/invite' => 'events#remove_invitation'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

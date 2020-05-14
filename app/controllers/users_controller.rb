@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [ :edit, :update, :show, :destroy]
+  before_action :set_user, only: [ :edit, :update, :destroy]
   before_action :require_users, only: [:show]
   def new
     @user = User.new
@@ -18,7 +18,12 @@ end
   end
 
   def show
+    @user = current_user
+    @events_created_by_user = @user.events.order("created_at DESC")
+
+    attending_events = Event.joins(:invitations).where("invitations.attendee_id = #{@user.id}")
   end
+  
   private
 
   def set_user

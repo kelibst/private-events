@@ -2,9 +2,7 @@
 <div class="container my-5">
 <h1 class="text-center">List of all Events</h1>
 <% @events.each do |event|%>
-    <div class="listing">
-        <div class="row">
-            <div class="card mx-auto">
+            <div class="card mx-auto my-5">
      <h4 class="card-title text-center">
                     <%=link_to event.creator.username, user_path(event.creator)%>
                 </h4> 
@@ -17,7 +15,5 @@
                 <% end %>
              </div>
             </div>
-        </div>
-    </div>
 <% end %>
 </div>
