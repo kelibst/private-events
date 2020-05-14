@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
     before_action :require_user, only:[:new]
 
+    def index
+        @events = Event.all
+    end
+
     def new
         @user = current_user
         @event= Event.new

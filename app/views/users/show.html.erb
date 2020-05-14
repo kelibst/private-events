@@ -3,7 +3,7 @@
 
 
     <h4 class="text-center"><%= @user.username%>'s Events</h4>
-
+    <p class= "text-center"><strong> Total Events created: </strong><span><%= @user.events.count%></span></p>
    <%= render 'events/event', obj: @user.events %>
 
    
