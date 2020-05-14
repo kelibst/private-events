@@ -29,7 +29,7 @@ class EventsController < ApplicationController
         invitation = Invitation.new(attended_event: @event,attendee: current_user)
         if  invitation.save 
             flash[:success] = 'you are going to the event'
-            redirect_to user_event_path(@event.creator.id,@event.id)
+            redirect_to event_path(@event.id)
         end
     end
 
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
         @event = Event.find_by(id: params['event_id'])
         Invitation.find_by(attended_event: @event,attendee: current_user).destroy
         flash[:success] = 'you remove the invitation to the event'
-        redirect_to user_event_path(@event.creator.id,@event.id)
+        redirect_to event_path(@event.id)
 
     end
 

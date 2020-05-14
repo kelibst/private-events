@@ -9,10 +9,10 @@
         <p><span>Location: </span><%= @event.location %></p>
         <p><span>Starts at: </span><%= @event.date %></p>
         <% if logged_in? && current_user != @event.creator %>
-            <% if attende_event?%>
-                <%= link_to 'Go to event',event_path(event_id: @event.id) , method: 'post', class: 'btn btn-primary'%>
-            <% else %>
-                <%= link_to "Don't go to event",event_path(event_id: @event.id) , method: 'delete', class: 'btn btn-secondary'%>
+            <% if attendee? %>
+                <%= link_to 'Go to event',invite_path(event_id: @event.id) , method: 'post', class: 'btn btn-primary'%>
+                <% else %>
+                <%= link_to "Don't go to event",invite_path(event_id: @event.id) , method: 'delete', class: 'btn btn-secondary'%>
             <% end %>
         <% end %>
     </span>
