@@ -5,8 +5,8 @@
     <h4 class="text-center"><%= @user.username%>'s Events</h4>
     <p class= "text-center"><strong> Total Events created: </strong><span><%= @user.events.count%></span></p>
    <%= render 'events/event', obj: @user.events %>
-
-   
+    <h4 class="text-center">Events you are attending</h4>
+    <%= render 'events/event', obj: @user.attended_events %>
 
 <%= link_to "Create Event", new_event_path, class: "btn btn-success"%>
     <% if logged_in? && current_user == @user %>
