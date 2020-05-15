@@ -3,17 +3,18 @@
    <div class="card event">
       
       <div class="card-body">
-        <p> <span>Created by: </span> <%= @event.creator.username%></p>
+        <p> <span>Created by: </span> <%= link_to @event.creator.username, user_path(@event.creator), class: "btn btn-secondary"%></p>
          <p><%= @event.description%></p>
         <p><strong>Location: </strong><span><%= @event.location %></span></p>
         <p><strong>Starts at: </strong><span><%= @event.date %></span></p>
-        <% if logged_in? && current_user != @event.creator %>
+        <% if logged_in? && current_user != @event.creator && event_not_expired? %>
             <% if attendee? %>
                 <%= link_to 'Go to event',invite_path(event_id: @event.id) , method: 'post', class: 'btn btn-primary'%>
                 <% else %>
                 <%= link_to "Don't go to event",invite_path(event_id: @event.id) , method: 'delete', class: 'btn btn-secondary'%>
             <% end %>
         <% end %>
+        <p class="text-danger"><%= "Event has already occured." if !event_not_expired?%></p>
       </div>
       <p><strong>Attendees:</strong></p>
     <hr>
