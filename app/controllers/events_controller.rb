@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @user = current_user
-    @event = @user.events.new(event_params)
+    @event = @user.events.build(event_params)
     invitation = Invitation.new(attended_event: @event, attendee: @user)
 
     if @event.save

@@ -2,9 +2,8 @@ require 'rails_helper'
 require 'capybara/rspec'
 
 describe 'Signin authentication test', type: :feature do
-  user = FactoryGirl.create(:user)
-
   it 'ensures sign in is working' do
+    user = FactoryGirl.create(:user)
     visit '/login'
     within('form') do
       fill_in 'username', with: user.username
