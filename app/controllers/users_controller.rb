@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 
   def show
     @events_created_by_user = @user.events.order('created_at DESC')
+    @past_events = current_user.attended_events.previous
+    @upcoming_events = current_user.attended_events.upcoming
   end
 
   private
