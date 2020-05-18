@@ -1,8 +1,8 @@
-# private-events
+# private-events ([The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations))
 
 In this project, I will build an application named Private Events and that behaves similar to Eventbrite. The main goal is to put in practice the main concepts of Associations in rails. [Microverse](https:www.microverse.org/) - @microverseinc
 
-# private-events ([The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations))
+
 
 ## Features
 
@@ -49,8 +49,17 @@ then start your server
 ```
 $ rails s
 ````
-navigate to localhost:3000
-
+Navigate to localhost:3000
+ 
+## How to run the test suite
+```
+* rspec
+```
+To run integration test
+```
+* Run rspec spec/models to run only model test
+```
+For unit model tests
 ## Authors
 
 👤 **Kelly Booster**
@@ -66,6 +75,3 @@ navigate to localhost:3000
 
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.ies
 
-* How to run the test suite
-* Run rspec to run all test
-* Run rspec spec/models to run only model test
