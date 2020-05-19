@@ -1,0 +1,54 @@
+<div class="container">
+<h1 class="text-center p-5">Welcome to <%= @user.username%>'s page.</h1>
+
+
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#created">Created</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#attending">Attending</a>
+  </li>
+
+   <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#past">Past</a>
+  </li>
+
+   <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#upcoming">Upcoming</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+
+<div class="tab-pane container active" id="created" >
+    <h4 class="text-center"><%= @user.username%>'s Events</h4>
+    <p class= "text-center"><strong> Total Events created: </strong><span><%= @user.events.count%></span></p>
+   <%= render 'events/event', obj: @user.events %>
+</div>
+<div class="tab-pane container fade" id ="attending">
+    <h4 class="text-center">Events you are attending</h4>
+    <p class= "text-center"><strong> Total Events attending: </strong><span><%= @user.attended_events.count%></span></p>
+    <%= render 'events/event', obj: @user.attended_events %>
+</div>
+
+<div class="tab-pane container fade" id ="past">
+    <h4 class="text-center">Events you are attending</h4>
+    <p class= "text-center"><strong> Total Events attending: </strong><span><%= @past_events.count%></span></p>
+    <%= render 'events/event', obj: @past_events %>
+</div>
+
+<div class="tab-pane container fade" id ="upcoming">
+    <h4 class="text-center">Events you are attending</h4>
+    <p class= "text-center"><strong> Total Events attending: </strong><span><%= @upcoming_events.count%></span></p>
+    <%= render 'events/event', obj: @upcoming_events %>
+</div>
+</div>
+<%= link_to "Create Event", new_event_path, class: "btn btn-success"%>
+    <% if logged_in? && current_user == @user %>
+        <%= link_to "Log out", logout_path, method: :delete, class: "btn btn-danger"%>
+    <% end %>
+</div>
+
+
+
