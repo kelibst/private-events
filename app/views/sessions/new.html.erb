@@ -1,0 +1,9 @@
+<div class="container py-5">
+    <h1 class="text-center font-weight-bolder display-5">Log into your Account</h1>
+  
+    <%= simple_form_for :session do |f| %>
+    <%= f.input :username, label: 'username', error: 'username is mandatory, please specify one' %>
+    <%= f.input :email, label: 'email', error: 'email is mandatory, please specify one' %>
+    <%= f.button :submit, "Sign in", class: "btn btn-success w-100" %>
+    <% end %>
+</div>

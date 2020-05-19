@@ -1,0 +1,77 @@
+
+<div class="container my-5">
+   <ul class="nav nav-pills">
+   <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#all">All Events</a>
+   </li>
+
+
+      <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#past">Past</a>
+   </li>
+
+      <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#upcoming">Upcoming</a>
+   </li>
+   </ul>
+
+   <div class="tab-content">
+
+      <div class="tab-pane container active" id="upcoming" >
+         <h1 class="text-center">List of all Upcoming Events</h1>
+         <% @upcoming_events.each do |event|%>
+                  <div class="card mx-auto my-5">
+            <h4 class="card-title text-center">
+                           <%=link_to event.title, event_path(event)%>
+                        </h4> 
+                     <div class="card-body text-center">
+                        
+                        <%= truncate(event.description,length: 100)%>
+                        
+                        <% if logged_in?%>
+                           
+                        <% end %>
+                     </div>
+                  </div>
+         <% end %>
+      </div>
+
+      <div class="tab-pane container fade" id="past" >
+         <h1 class="text-center">List of all previous Events</h1>
+         <% @previous_events.each do |event|%>
+                     <div class="card mx-auto my-5">
+            <h4 class="card-title text-center">
+                           <%=link_to event.title, event_path(event)%>
+                        </h4> 
+                     <div class="card-body text-center">
+                        
+                        <%= truncate(event.description,length: 100)%>
+                        
+                        <% if logged_in?%>
+                           
+                        <% end %>
+                     </div>
+                     </div>
+         <% end %>
+      </div>
+
+         <div class="tab-pane container fade" id="all" >
+            <h1 class="text-center">List of all Events</h1>
+            <% @events.each do |event|%>
+               <div class="card mx-auto my-5">
+               <h4 class="card-title text-center">
+                              <%=link_to event.title, event_path(event)%>
+                           </h4> 
+                        <div class="card-body text-center">
+                           
+                           <%= truncate(event.description,length: 100)%>
+                           
+                           <% if logged_in?%>
+                              
+                           <% end %>
+                        </div>
+               </div>
+            <% end %>
+         </div>
+   </div>
+</div>
